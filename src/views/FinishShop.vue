@@ -20,6 +20,9 @@ import {VueCookieNext} from 'vue-cookie-next'
       <!-- verifica em qual parte da finalização da compra está -->
       <!-- se estiver na parte 1 -->
       <div v-if="verifyState()">
+        <span style="margin-left: 50px; font-size: large">Os livros já são quase seus: 1/2</span>
+        <div style="width: 45%; background-color: #0b859f; height: 10px; margin-left: 50px"/>
+        <br>
         <!-- fieldset para fazer todas os radios funcionarem juntos -->
         <fieldset>
           <!-- Se não foi feito o login não permite a compra -->
@@ -126,6 +129,9 @@ import {VueCookieNext} from 'vue-cookie-next'
       <div v-else>
         <div>
           <div>
+            <span style="margin-left: 50px; font-size: large">Os livros já são quase seus: 2/2</span>
+            <div style="width: 95%; background-color: #0b859f; height: 10px; margin-left: 50px"/>
+            <br>
             <span class="normal-text" style="padding-left: 50px">
                 2. Confirme sua compra
             </span>
@@ -231,10 +237,10 @@ export default {
      * @returns {boolean} retorna True se está na primeira fase
      */
     verifyState() {
-      let payment_form = parseInt(this.$route.query.payment_form[0]);
+      let payment_form = parseInt(this.$route.query.payment_form);
       if (isNaN(payment_form))
         return true;
-      let payment_id = parseInt(this.$route.query.id[0]);
+      let payment_id = parseInt(this.$route.query.id);
       if (isNaN(payment_id))
         return true;
       if (payment_id < 0)
